@@ -1,7 +1,6 @@
 package tg.eplcoursandroid.chatapp.data.repository
 
 import android.util.Log
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import tg.eplcoursandroid.chatapp.data.models.Utilisateur
 
@@ -9,7 +8,6 @@ import tg.eplcoursandroid.chatapp.data.models.Utilisateur
 // avec la base de donnees concernant les utilisateurs
 
 class UtilisateurRepository {
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance() // on recupere l'instance de firebase
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance() // on recupere l'instance de la BD
 
     // methode pour ajouter un utilisateur a la base de donnees
