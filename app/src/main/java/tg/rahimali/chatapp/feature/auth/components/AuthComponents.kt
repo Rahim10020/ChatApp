@@ -89,3 +89,39 @@ fun MyPasswordTextField(label: String){
         shape = RoundedCornerShape(10.dp),
     )
 }
+
+
+
+@Composable
+fun MyConfirmPasswordTextField(label: String){
+    var confirmPassword by remember { mutableStateOf("") }
+
+    OutlinedTextField(
+        modifier = Modifier.fillMaxWidth(),
+        value = confirmPassword,
+        onValueChange = {confirmPassword = it},
+        label = {
+            Text(text = label)
+        },
+        leadingIcon = {
+            Icon(
+                painter = painterResource(R.drawable.ic_lock),
+                contentDescription = null,
+                tint = colorResource(R.color.colorBlack)
+            )
+        },
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedTextColor = colorResource(R.color.colorTextBlack),
+            focusedContainerColor = colorResource(R.color.colorWhite),
+            unfocusedContainerColor = colorResource(R.color.colorTextWhite),
+            cursorColor = colorResource(R.color.colorTextBlack),
+            focusedLabelColor = colorResource(R.color.colorTextBlack),
+            unfocusedLabelColor = colorResource(R.color.colorTextBlack),
+            unfocusedBorderColor = Color.Transparent,
+            focusedBorderColor = Color.Transparent
+        ),
+        visualTransformation = PasswordVisualTransformation(),
+        singleLine = true,
+        shape = RoundedCornerShape(10.dp),
+    )
+}

@@ -48,9 +48,9 @@ fun LoginScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Image(
-                painter = painterResource(R.drawable.chat),
+               painter = painterResource(R.drawable.chat),
                 contentDescription = null,
-                modifier = Modifier.size(80.dp).background(Color.White)
+                modifier = Modifier.size(80.dp)
             )
             Spacer(modifier = Modifier.height(30.dp))
             MyEmailTextField(stringResource(R.string.email))
