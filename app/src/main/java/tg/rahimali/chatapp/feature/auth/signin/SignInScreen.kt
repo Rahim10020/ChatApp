@@ -53,9 +53,15 @@ fun LoginScreen(navController: NavController) {
                 modifier = Modifier.size(80.dp)
             )
             Spacer(modifier = Modifier.height(30.dp))
-            MyEmailTextField(stringResource(R.string.email))
+            MyEmailTextField(
+                stringResource(R.string.email),
+                painterResource(R.drawable.ic_email)
+            )
             Spacer(modifier = Modifier.height(4.dp))
-            MyPasswordTextField(stringResource(R.string.password))
+            MyPasswordTextField(
+                stringResource(R.string.password),
+                painterResource(R.drawable.ic_lock)
+            )
             Spacer(modifier = Modifier.height(20.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(),

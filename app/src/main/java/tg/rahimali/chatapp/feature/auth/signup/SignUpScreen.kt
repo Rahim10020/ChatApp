@@ -26,6 +26,7 @@ import androidx.navigation.compose.rememberNavController
 import tg.rahimali.chatapp.R
 import tg.rahimali.chatapp.feature.auth.components.MyConfirmPasswordTextField
 import tg.rahimali.chatapp.feature.auth.components.MyEmailTextField
+import tg.rahimali.chatapp.feature.auth.components.MyNameTextField
 import tg.rahimali.chatapp.feature.auth.components.MyPasswordTextField
 
 
@@ -54,11 +55,25 @@ fun SignUpScreen(navController: NavController) {
                 modifier = Modifier.size(80.dp)
             )
             Spacer(modifier = Modifier.height(30.dp))
-            MyEmailTextField(stringResource(R.string.email))
+            MyNameTextField(
+                stringResource(R.string.name),
+                painterResource(R.drawable.ic_person)
+            )
             Spacer(modifier = Modifier.height(4.dp))
-            MyPasswordTextField(stringResource(R.string.password))
+            MyEmailTextField(
+                stringResource(R.string.email),
+                painterResource(R.drawable.ic_email)
+            )
             Spacer(modifier = Modifier.height(4.dp))
-            MyConfirmPasswordTextField(stringResource(R.string.confirm_password))
+            MyPasswordTextField(
+                stringResource(R.string.password),
+                painterResource(R.drawable.ic_lock)
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            MyConfirmPasswordTextField(
+                stringResource(R.string.confirm_password),
+                painterResource(R.drawable.ic_lock)
+            )
             Spacer(modifier = Modifier.height(20.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(),

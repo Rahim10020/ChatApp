@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -22,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import tg.rahimali.chatapp.R
 
 @Composable
-fun MyEmailTextField(label: String){
+fun MyEmailTextField(label: String, painter: Painter){
     var email by remember { mutableStateOf("") }
 
     OutlinedTextField(
@@ -34,7 +35,7 @@ fun MyEmailTextField(label: String){
         },
         leadingIcon = {
             Icon(
-                painter = painterResource(R.drawable.ic_email),
+                painter = painter,
                 contentDescription = null,
                 tint = colorResource(R.color.colorBlack)
             )
@@ -56,8 +57,45 @@ fun MyEmailTextField(label: String){
     )
 }
 
+
 @Composable
-fun MyPasswordTextField(label: String){
+fun MyNameTextField(label: String, painter: Painter){
+    var name by remember { mutableStateOf("") }
+
+    OutlinedTextField(
+        modifier = Modifier.fillMaxWidth(),
+        value = name,
+        onValueChange = {name = it},
+        label = {
+            Text(text = label)
+        },
+        leadingIcon = {
+            Icon(
+                painter = painter,
+                contentDescription = null,
+                tint = colorResource(R.color.colorBlack)
+            )
+        },
+        visualTransformation = VisualTransformation.None,
+        keyboardOptions = KeyboardOptions.Default,
+        singleLine = true,
+        shape = RoundedCornerShape(10.dp),
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedTextColor = colorResource(R.color.colorTextBlack),
+            focusedContainerColor = colorResource(R.color.colorWhite),
+            unfocusedContainerColor = colorResource(R.color.colorTextWhite),
+            cursorColor = colorResource(R.color.colorTextBlack),
+            focusedLabelColor = colorResource(R.color.colorTextBlack),
+            unfocusedLabelColor = colorResource(R.color.colorTextBlack),
+            unfocusedBorderColor = Color.Transparent,
+            focusedBorderColor = Color.Transparent
+        )
+    )
+}
+
+
+@Composable
+fun MyPasswordTextField(label: String, painter: Painter){
     var password by remember { mutableStateOf("") }
 
     OutlinedTextField(
@@ -69,7 +107,7 @@ fun MyPasswordTextField(label: String){
         },
         leadingIcon = {
             Icon(
-                painter = painterResource(R.drawable.ic_lock),
+                painter = painter,
                 contentDescription = null,
                 tint = colorResource(R.color.colorBlack)
             )
@@ -91,9 +129,8 @@ fun MyPasswordTextField(label: String){
 }
 
 
-
 @Composable
-fun MyConfirmPasswordTextField(label: String){
+fun MyConfirmPasswordTextField(label: String, painter: Painter){
     var confirmPassword by remember { mutableStateOf("") }
 
     OutlinedTextField(
@@ -105,7 +142,7 @@ fun MyConfirmPasswordTextField(label: String){
         },
         leadingIcon = {
             Icon(
-                painter = painterResource(R.drawable.ic_lock),
+                painter = painter,
                 contentDescription = null,
                 tint = colorResource(R.color.colorBlack)
             )
