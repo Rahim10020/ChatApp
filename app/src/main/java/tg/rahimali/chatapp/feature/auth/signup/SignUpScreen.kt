@@ -14,6 +14,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,10 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import tg.rahimali.chatapp.R
-import tg.rahimali.chatapp.feature.auth.components.MyConfirmPasswordTextField
-import tg.rahimali.chatapp.feature.auth.components.MyEmailTextField
-import tg.rahimali.chatapp.feature.auth.components.MyNameTextField
-import tg.rahimali.chatapp.feature.auth.components.MyPasswordTextField
+import tg.rahimali.chatapp.feature.auth.components.MyTextField
 
 
 @Composable
@@ -39,6 +40,14 @@ fun SignUpScreenPreview(){
 
 @Composable
 fun SignUpScreen(navController: NavController) {
+
+    var name by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
+
+
+
     Scaffold(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -55,32 +64,50 @@ fun SignUpScreen(navController: NavController) {
                 modifier = Modifier.size(80.dp)
             )
             Spacer(modifier = Modifier.height(30.dp))
-            MyNameTextField(
+
+            MyTextField(
                 stringResource(R.string.name),
-                painterResource(R.drawable.ic_person)
-            )
+                painterResource(R.drawable.ic_person),
+                name,
+                false
+            ) { newName -> name = newName }
+
             Spacer(modifier = Modifier.height(4.dp))
-            MyEmailTextField(
+
+            MyTextField(
                 stringResource(R.string.email),
-                painterResource(R.drawable.ic_email)
-            )
+                painterResource(R.drawable.ic_email),
+                email,
+                false
+            ) { newEmail -> email = newEmail }
+
             Spacer(modifier = Modifier.height(4.dp))
-            MyPasswordTextField(
+
+            MyTextField(
                 stringResource(R.string.password),
-                painterResource(R.drawable.ic_lock)
-            )
+                painterResource(R.drawable.ic_lock),
+                password,
+                true
+            ) { newPassword -> password = newPassword }
+
             Spacer(modifier = Modifier.height(4.dp))
-            MyConfirmPasswordTextField(
+
+            MyTextField(
                 stringResource(R.string.confirm_password),
-                painterResource(R.drawable.ic_lock)
-            )
+                painterResource(R.drawable.ic_lock),
+                confirmPassword,
+                true
+            ) { newConfirmPassword -> confirmPassword = newConfirmPassword }
+
             Spacer(modifier = Modifier.height(20.dp))
+
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {}
             ) {
                 Text(text = stringResource(R.string.sign_up_btn))
             }
+
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = stringResource(R.string.sign_in),
