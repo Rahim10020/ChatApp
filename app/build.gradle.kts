@@ -1,11 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.dagger.hilt)
+    kotlin("kapt")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
     namespace = "tg.rahimali.chatapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "tg.rahimali.chatapp"
@@ -50,6 +53,18 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.dagger.hilt.android)
+    implementation(libs.firebase.crashlytics.buildtools)
+    implementation(libs.firebase.database)
+    kapt(libs.dagger.hilt.compiler)
+    implementation(libs.dagger.hilt.compose)
+    implementation(libs.coil)
+    implementation(libs.material)
+    implementation(libs.volley)
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-analytics")
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

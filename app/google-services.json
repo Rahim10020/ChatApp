@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "845417072769",
+    "firebase_url": "https://chatapp-c46f3-default-rtdb.firebaseio.com",
+    "project_id": "chatapp-c46f3",
+    "storage_bucket": "chatapp-c46f3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845417072769:android:df8cd49eca934d2378a580",
+        "android_client_info": {
+          "package_name": "tg.eplcoursandroid.chatapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgaI9eI08Mi9gyRds7nModCJlSsUTXP2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845417072769:android:505a20127d0cb26678a580",
+        "android_client_info": {
+          "package_name": "tg.rahimali.chatapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgaI9eI08Mi9gyRds7nModCJlSsUTXP2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

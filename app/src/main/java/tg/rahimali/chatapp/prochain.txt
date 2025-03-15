@@ -1,0 +1,9 @@
+
+------------------------------------------------------------
+           ETAPES SUIVIES POUR CODER L'APPLICATION
+------------------------------------------------------------
+     - Ajout des dependances dans le libs.versions.toml
+     - ajout du plugin "dagger-hilt" dans les build.gradle(Project et App)
+     - Creation d'un projet firebase et connection avec notre application
+     - Creation des packages et des fichiers necessaires
+     - Creation  d'un navController et du navhost pour gerer les routes
