@@ -4,6 +4,8 @@ import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.googlefonts.Font
+import androidx.compose.ui.text.googlefonts.GoogleFont
 
 import androidx.compose.ui.unit.sp
 
@@ -32,4 +34,19 @@ val Typography = Typography(
         letterSpacing = 0.5.sp
     )
     */
+)
+
+private val fontProvider = GoogleFont.Provider(
+    providerAuthority = "com.google.android.gms.fonts",
+    providerPackage = "com.google.android.gms",
+    certificates = tg.rahimali.chatapp.R.array.com_google_android_gms_fonts_certs
+)
+
+
+val montserratFontFamily = FontFamily(
+    Font(
+        googleFont = GoogleFont("Roboto"),
+        fontProvider = fontProvider,
+        weight = FontWeight.Bold
+    )
 )

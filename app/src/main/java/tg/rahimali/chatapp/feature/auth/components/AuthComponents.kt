@@ -23,6 +23,7 @@ fun MyTextField(
     painter: Painter,
     value: String,
     transformation: Boolean,
+    isError: Boolean,
     onValueChange: (String) -> Unit
 ) {
 
@@ -53,5 +54,6 @@ fun MyTextField(
         visualTransformation = if (transformation) PasswordVisualTransformation() else VisualTransformation.None,
         singleLine = true,
         shape = RoundedCornerShape(10.dp),
+        isError = isError,
     )
 }

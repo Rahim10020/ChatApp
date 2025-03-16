@@ -25,10 +25,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import tg.rahimali.chatapp.R
 import tg.rahimali.chatapp.feature.auth.components.MyTextField
+import tg.rahimali.chatapp.ui.theme.montserratFontFamily
 
 
 @Composable
@@ -65,7 +67,8 @@ fun LoginScreen(navController: NavController) {
                 stringResource(R.string.email),
                 painterResource(R.drawable.ic_email),
                 email,
-                false
+                transformation = false,
+                isError = false,
             ) { newEmail -> email = newEmail }
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -74,7 +77,8 @@ fun LoginScreen(navController: NavController) {
                 stringResource(R.string.password),
                 painterResource(R.drawable.ic_lock),
                 password,
-                true
+                transformation = true,
+                isError = false,
             ) { newPassword -> password = newPassword }
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -89,6 +93,7 @@ fun LoginScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = stringResource(R.string.sign_up),
+                fontSize = 16.sp
             )
         }
 

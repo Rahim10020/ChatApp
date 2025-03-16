@@ -25,22 +25,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import tg.rahimali.chatapp.R
 import tg.rahimali.chatapp.feature.auth.components.MyTextField
+import tg.rahimali.chatapp.ui.theme.montserratFontFamily
 
 
 @Composable
 @Preview
-fun SignUpScreenPreview(){
+fun SignUpScreenPreview() {
     SignUpScreen(navController = rememberNavController())
 }
 
 
 @Composable
 fun SignUpScreen(navController: NavController) {
-
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -69,7 +70,8 @@ fun SignUpScreen(navController: NavController) {
                 stringResource(R.string.name),
                 painterResource(R.drawable.ic_person),
                 name,
-                false
+                transformation = false,
+                isError = false,
             ) { newName -> name = newName }
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -78,7 +80,8 @@ fun SignUpScreen(navController: NavController) {
                 stringResource(R.string.email),
                 painterResource(R.drawable.ic_email),
                 email,
-                false
+                transformation = false,
+                isError = false,
             ) { newEmail -> email = newEmail }
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -87,7 +90,8 @@ fun SignUpScreen(navController: NavController) {
                 stringResource(R.string.password),
                 painterResource(R.drawable.ic_lock),
                 password,
-                true
+                transformation = true,
+                isError = false,
             ) { newPassword -> password = newPassword }
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -96,7 +100,8 @@ fun SignUpScreen(navController: NavController) {
                 stringResource(R.string.confirm_password),
                 painterResource(R.drawable.ic_lock),
                 confirmPassword,
-                true
+                transformation = true,
+                isError = password.isNotEmpty() && confirmPassword.isNotEmpty() && password != confirmPassword,
             ) { newConfirmPassword -> confirmPassword = newConfirmPassword }
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -111,6 +116,8 @@ fun SignUpScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = stringResource(R.string.sign_in),
+                fontSize = 16.sp
+
             )
         }
 
