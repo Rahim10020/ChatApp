@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import tg.rahimali.chatapp.R
+import tg.rahimali.chatapp.feature.auth.components.MyButton
 import tg.rahimali.chatapp.feature.auth.components.MyTextField
 import tg.rahimali.chatapp.ui.theme.montserratFontFamily
 
@@ -106,19 +108,23 @@ fun SignUpScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Button(
-                modifier = Modifier.fillMaxWidth(),
+            MyButton(
+                stringResource(R.string.sign_up_btn),
+                enabled = name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty() && password == confirmPassword,
                 onClick = {}
-            ) {
-                Text(text = stringResource(R.string.sign_up_btn))
-            }
+            )
 
             Spacer(modifier = Modifier.height(10.dp))
-            Text(
-                text = stringResource(R.string.sign_in),
-                fontSize = 16.sp
 
-            )
+            TextButton(
+                onClick = {navController.popBackStack()}
+            ) {
+                Text(
+                    text = stringResource(R.string.sign_in),
+                    fontSize = 16.sp
+
+                )
+            }
         }
 
     }

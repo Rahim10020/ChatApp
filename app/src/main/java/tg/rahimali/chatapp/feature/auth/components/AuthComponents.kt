@@ -2,6 +2,7 @@ package tg.rahimali.chatapp.feature.auth.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -11,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -26,7 +28,6 @@ fun MyTextField(
     isError: Boolean,
     onValueChange: (String) -> Unit
 ) {
-
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
         value = value,
@@ -56,4 +57,16 @@ fun MyTextField(
         shape = RoundedCornerShape(10.dp),
         isError = isError,
     )
+}
+
+
+@Composable
+fun MyButton(text: String, enabled: Boolean, onClick: () -> Unit) {
+    Button(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = onClick,
+        enabled = enabled,
+    ) {
+        Text(text = text)
+    }
 }
