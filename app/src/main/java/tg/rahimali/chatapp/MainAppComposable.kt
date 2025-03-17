@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import tg.rahimali.chatapp.feature.auth.signin.LoginScreen
 import tg.rahimali.chatapp.feature.auth.signup.SignUpScreen
+import tg.rahimali.chatapp.feature.home.HomeScreen
 
 @Composable
 fun MainApp(){
@@ -21,6 +22,9 @@ fun MainApp(){
             }
             composable("register"){
                 SignUpScreen(navController)
+            }
+            composable("home"){
+                HomeScreen(navController)
             }
         }
     }

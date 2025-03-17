@@ -6,15 +6,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,31 +23,40 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import tg.rahimali.chatapp.R
 import tg.rahimali.chatapp.feature.auth.components.MyButton
 import tg.rahimali.chatapp.feature.auth.components.MyTextField
-import tg.rahimali.chatapp.ui.theme.montserratFontFamily
 
 
 @Composable
 @Preview
-fun LoginScreenPreview(){
+fun LoginScreenPreview() {
     LoginScreen(navController = rememberNavController())
 }
 
 
 @Composable
 fun LoginScreen(navController: NavController) {
+    val viewModel: SignInViewModel = hiltViewModel()
+    // mis a jour automatique du ui en fonction des changements d'etats
+    val uiState = viewModel.state.collectAsState()
+
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
+    val context = LocalContext.current
+    LaunchedEffect(key1 = uiState.value) {
+
+    }
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -59,7 +69,7 @@ fun LoginScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Image(
-               painter = painterResource(R.drawable.chat),
+                painter = painterResource(R.drawable.chat),
                 contentDescription = null,
                 modifier = Modifier.size(80.dp)
             )
@@ -85,16 +95,19 @@ fun LoginScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            MyButton(
-                stringResource(R.string.login_btn),
-                enabled = true,
-                onClick = {}
-            )
-
+            if (uiState.value == SignInState.Loading) {
+                CircularProgressIndicator()
+            } else {
+                MyButton(
+                    stringResource(R.string.login_btn),
+                    enabled = email.isNotEmpty() && password.isNotEmpty() && uiState.value == SignInState.Nothing || uiState.value == SignInState.Error,
+                    onClick = { viewModel.signIn(email, password) }
+                )
+            }
             Spacer(modifier = Modifier.height(10.dp))
 
             TextButton(
-                onClick = {navController.navigate("register")}
+                onClick = { navController.navigate("register") }
             ) {
                 Text(
                     text = stringResource(R.string.sign_up),
