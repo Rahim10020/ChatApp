@@ -1,5 +1,6 @@
 package tg.rahimali.chatapp.feature.auth.signin
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -55,7 +56,17 @@ fun LoginScreen(navController: NavController) {
 
     val context = LocalContext.current
     LaunchedEffect(key1 = uiState.value) {
+        when(uiState.value){
+            is SignInState.Success -> {
+                navController.navigate("home")
+            }
 
+            is SignInState.Error -> {
+                Toast.makeText(context, "SignIn failed", Toast.LENGTH_SHORT).show()
+            }
+
+            else -> {}
+        }
     }
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
